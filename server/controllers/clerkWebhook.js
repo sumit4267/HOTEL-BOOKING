@@ -1,4 +1,4 @@
-import User from "../models/User.js";
+import User from "../models/User";
 import { Webhook } from "svix";
 
 const clerkWebhook=async(req,res)=>{
@@ -42,13 +42,7 @@ const clerkWebhook=async(req,res)=>{
         break;
       }
 
-      case "user.deleted":
-        {const userData = {
-      _id: data.id,
-      email: data.email_addresses[0].email_address,
-      username: data.first_name + " " + data.last_name,
-      image: data.image_url,
-    };
+      case "user.deleted":{
           await User.findByIdAndDelete(data.id);
           break;
         }
