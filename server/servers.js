@@ -1,8 +1,7 @@
 import express from "express"
 import "dotenv/config";
 import cors from "cors" ;
-
-import { clerkMiddleware} from '@clerk/express';
+import { clerkMiddleware } from '@clerk/express';
 import clerkWebhook from "./controllers/clerkWebhook.js";
 import userRouter from "./routes/userRoutes.js";
 import hotelRouter from "./routes/hotelRoutes.js";

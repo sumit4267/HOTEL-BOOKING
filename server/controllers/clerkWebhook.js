@@ -28,7 +28,6 @@ const clerkWebhook=async(req,res)=>{
       image: data.image_url,
     };
         await User.create(userData);
-
         break;
       }
       case "user.updated": {
