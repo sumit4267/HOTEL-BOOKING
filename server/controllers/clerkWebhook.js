@@ -62,4 +62,4 @@ const clerkWebhook=async(req,res)=>{
   }
 }
 
-export default clerkWebhook
+export default clerkWebhook;
