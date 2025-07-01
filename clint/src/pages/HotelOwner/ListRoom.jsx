@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Title from "../../components/Title";
+import { useAppContext } from "../../context/AppContext";
 
 const ListRoom = () => {
   const [Rooms, setRooms] = useState([]);

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Title from "../../components/Title";
 import { assets } from "../../assets/assets";
+import { useAppContext } from "../../context/AppContext";
 
 const Dashboard = () => {
   const { currency, user, getToken, toast, axios } = useAppContext();
@@ -18,6 +19,7 @@ const Dashboard = () => {
       if (data.success) {
         setdashboardData(data.dashboardData);
       } else {
+        
         toast.error(data.message);
       }
     } catch (error) {
