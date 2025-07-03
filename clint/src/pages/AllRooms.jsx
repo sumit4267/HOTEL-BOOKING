@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { assets, facilityIcons, roomsDummyData } from "../assets/assets";
+import React, { useMemo,useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { assets, facilityIcons } from "../assets/assets";
 import Starrating from "../components/Starrating";
 import { useAppContext } from "../context/AppContext";
 

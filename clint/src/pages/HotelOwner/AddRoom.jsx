@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Title from "../../components/Title";
 import { assets } from "../../assets/assets";
 import toast from "react-hot-toast";
+import { useAppContext } from "../../context/AppContext";
 
 const AddRoom = () => {
   const { axios, getToken } = useAppContext();
@@ -88,7 +89,7 @@ const AddRoom = () => {
         subTitle="Fill in the details carefully and accurate room details, pricing, and amenities, to enhance the user booking experience."
       />
       {/* Upload Area For Images */}
-      <p assName="text-gray-800 mt-10">Images</p>
+      <p className="text-gray-800 mt-10">Images</p>
       <div className="grid grid-cols-2 sm:flex gap-4 my-2 flex-wrap">
         {Object.keys(images).map((key) => (
           <label htmlFor={`roomImage${key}`} key={key}>
