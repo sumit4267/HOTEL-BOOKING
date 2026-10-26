@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Hotelcard from './hotelcard'
+import Hotelcard from './Hotelcard'
 import Title from './Title'
 import { useNavigate } from 'react-router-dom'
 import { useAppContext } from '../context/AppContext'
