@@ -1,6 +1,7 @@
 import connectCloudinary from "../configs/cloudinary.js";
 import Hotel from "../models/Hotel.js";
 import Room from "../models/Room.js";
+import { v2 as cloudinary } from "cloudinary";
 
 // API to create a new room for a hotel
 export const createRoom = async (req, res) => {
@@ -11,7 +12,7 @@ export const createRoom = async (req, res) => {
 
     // upload images to cloudinary
     const uploadImages = req.files.map(async (file) => {
-      const response = await connectCloudinary.uploader.upload(file.path);
+     const response = await cloudinary.uploader.upload(file.path);
       return response.secure_url;
     });
     // Wait for all uploads to complete

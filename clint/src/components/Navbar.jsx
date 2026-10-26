@@ -150,7 +150,7 @@ const Navbar = () => {
           src={assets.menuIcon}
           alt=""
           className={'${isScrolled} && "invert"}h-4'}
-        />
+          />
       </div>
 
       {/* Mobile Menu */}

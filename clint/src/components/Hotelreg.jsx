@@ -4,7 +4,7 @@ import { useAppContext } from "../context/AppContext";
 import toast from "react-hot-toast";
 
 const Hotelreg = () => {
-  const { setShowHotelReg,axios,getToken,setIsOwner } = useAppContext();
+  const { setShowHotelReg, axios, getToken, setIsOwner } = useAppContext();
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -13,11 +13,24 @@ const Hotelreg = () => {
 
   const onSubmitHandler = async (event) => {
     try {
+
       event.preventDefault();
-     
-      const { data } = await axios.post(`/api/hotels/`,{ name, contact, address, city }, {headers: {Authorization: ` Bearer ${await getToken()}`,  }
-        }
-      );
+
+
+
+
+      const token = await getToken();
+
+      console.log("Token:", token);
+
+      if (!token) {
+        toast.error("Please login first");
+        return;
+      }
+
+      const { data } = await axios.post(`/api/hotels/`, { name, contact, address, city }, {
+        headers: { Authorization: `Bearer ${token}` }  // Space hata diya aur direct 'token' variable use kar liya
+      });
       if (data.success) {
         toast.success(data.message);
         setIsOwner(true);
@@ -29,6 +42,7 @@ const Hotelreg = () => {
       toast.error(error.message);
     }
   };
+
 
   return (
     <div

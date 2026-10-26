@@ -19,13 +19,20 @@ connectCloudinary();
 const app = express()
 app.use(cors()) // Enable Cross-Origin Resource Sharing
  
+
+
+app.post(
+  "/api/clerk",
+  express.raw({ type: "application/json" }),
+  clerkWebhook
+); 
 // middleware
 app.use(express.json())
 app.use(clerkMiddleware())
 
 
 // API to listen to Clerk Webhooks
-app.use("/api/clerk",clerkWebhook)
+app.use("/api/clerk", clerkWebhook) // <-- Is duplicate line ko delete kar dein
 
 
 

@@ -11,12 +11,12 @@ const clerkWebhook=async(req,res)=>{
       "svix-id": req.headers["svix-id"],
       "svix-timestamp": req.headers["svix-timestamp"],
       "svix-signature": req.headers["svix-signature"],
-};  
-// Verifying Headers
-   await whook.verify(JSON.stringify(req.body), headers)
-    // Getting Data from request body 
-    const { data, type } = req.body
-
+}; 
+ 
+  // Buffer to string
+    const payload = req.body.toString();
+    await whook.verify(payload, headers);
+    const { data, type } = JSON.parse(payload);
     
     // Switch Cases for differernt Events
     switch (type) {

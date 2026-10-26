@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser, useAuth } from "@clerk/clerk-react";
 import { toast } from "react-hot-toast";
+import { roomsDummyData } from "../assets/assets.js";
 
 axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
 const AppContext = createContext();
@@ -14,16 +15,15 @@ export const AppProvider = ({ children }) => {
 
   const [isOwner, setIsOwner] = useState(false);
   const [showHotelReg, setShowHotelReg] = useState(false);
-  const [searchedCitiies, setSearchedCities] = useState([]);
-  const [rooms, setrooms] = useState([]);
+ const [searchedCities, setSearchedCities] = useState([]);
 
-  const fetchRooms = async () => {
+  const [rooms, setrooms] = useState(roomsDummyData);
+
+    const fetchRooms = async () => {
     try {
       const { data } = await axios.get("/api/rooms");
-      if (data.success) {
+      if (data.success && data.rooms.length > 0) {
         setrooms(data.rooms);
-      } else {
-        toast.error(data.message);
       }
     } catch (error) {
       toast.error(error.message);
@@ -69,7 +69,7 @@ export const AppProvider = ({ children }) => {
     axios,
     showHotelReg,
     setShowHotelReg,
-    searchedCitiies,
+   searchedCities,
     setSearchedCities,
     rooms,setrooms
   };

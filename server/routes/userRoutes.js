@@ -8,7 +8,7 @@ import { getUserData, storeRecentSearchedCities } from "../controllers/userContr
 
 
 
-const userRouter = express. Router();
+const userRouter = express.Router();
 
 userRouter.get('/',protect, getUserData);
 userRouter.post('/store-recent-search',protect, storeRecentSearchedCities);
