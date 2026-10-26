@@ -2,6 +2,7 @@ import React from "react";
 import { assets, cities } from "../assets/assets";
 import { useAppContext } from "../context/AppContext";
 import { useState } from "react";
+import hotel3 from "../assets/hotel3.jpg";
 
 const Hero = () => {
   const { navigate, getToken, axios, setSearchedCities } = useAppContext();
@@ -14,7 +15,7 @@ const Hero = () => {
     await axios.post(
       "/api/user/store-recent-search",
       { recentSearchedCity: destination },
-      { headers: { Authorization: ` Bearer ${await getToken()}` } }
+      { headers: { Authorization: `Bearer ${await getToken()}` } }
     );
     // add destination to searchedCities max 3 recent searched cities
     setSearchedCities((prevSearchedCities) => {
@@ -27,7 +28,10 @@ const Hero = () => {
   };
 
   return (
-    <div className='flex flex-col items-start justify-center px-6 md:px-16 lg:px-24 xl:px-32 text-white bg-[url("src/assets/hotel3.jpg")] bg-no-repeat bg-cover bg-center h-screen'>
+       <div 
+      style={{ backgroundImage: `url(${hotel3})` }}
+      className='flex flex-col items-start justify-center px-6 md:px-16 lg:px-24 xl:px-32 text-white bg-no-repeat bg-cover bg-center h-screen'
+    >
       <p className="bg-[#49B9FF]/50 px-3.5 py-1 rounded-full mt-20">
         {" "}
         The Ultimate Hotel Experince
